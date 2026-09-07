@@ -1,5 +1,7 @@
 // reverse string using two pointes approach
 
+const {reverse} = require ('dns');
+
 let str = 'hello';
 let strArr = str.split ('');
 
@@ -73,23 +75,46 @@ for (let i = 0; i < arrNum.length; i++) {
 //   end--;
 // }
 
-// formula to rotate array by k times is to reverse first k elements, then reverse remaining elements and then reverse whole array.
+// left rotate array
 
-function rotateArray (arr, start, end) {
-  console.log ('start', start, 'end', end);
+//  formula to rotate array by k times is to reverse first k elements, then reverse remaining elements and then reverse whole array.
+//  1) first k reverse
+//  2) remaining elements reverse
+//  3) whole array reverse
+
+// two pointer approach to reverse array
+
+// rotate 4 time
+// expected answer [5,6,7,8,9,4,3,2,1]
+function rotateArray (array, start, end) {
   while (start < end) {
-    let temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
+    let temp = array[start];
+    array[start] = array[end];
+    array[end] = temp;
     start++;
     end--;
   }
 }
-let array = [1, 2, 3, 4, 5];
-k = 2;
-k = k % array.length - 1;
-console.log (array.length - 1, 'array length');
+let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let k = 4;
 
-rotateArray (array, 0, k - 1);
-rotateArray (array, k, array.length - 1);
+k = k % array.length;
+
+// rotateArray (array, 0, k - 1);
+// console.log (array); // first step = [4,3,2,1,5,6,7,8,9]
+// rotateArray (array, k, array.length - 1);
+// console.log (array); // second step = [4,3,2,1,9,8,7,6,5]
+// rotateArray (array, 0, array.length - 1);
+// console.log (array); // final step [5,6,7,8,9,1,2,3,4]
+
+// right rotate array
+
+// 1) whole reverse
+// 2)first k reverse
+// 3)remaining reverse
 rotateArray (array, 0, array.length - 1);
+console.log (array); // first step = [9,8,7,6,5,4,3,2,1]
+rotateArray (array, 0, k - 1);
+console.log (array); // second step = [6,7,8,9,5,4,3,2,1]
+rotateArray (array, k, array.length - 1);
+console.log (array); // final step [6,7,8,9,1,2,3,4,5]
