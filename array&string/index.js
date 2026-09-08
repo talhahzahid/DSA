@@ -146,4 +146,20 @@ function isAnagram (str1, str2) {
 
 let str1 = 'listen';
 let str2 = 'silent';
-console.log (isAnagram (str1, str2));
+// console.log (isAnagram (str1, str2));
+
+// palindrome
+function isPalindrome (str) {
+  let s = str.toLowerCase ().replace (/[^a-z0-9]/g, '');
+  let start = 0;
+  let end = s.length - 1;
+  while (start < end) {
+    if (s[start] !== s[end]) {
+      return false;
+    }
+    start++;
+    end--;
+  }
+  return true;
+}
+console.log (isPalindrome ('MadaM'));
