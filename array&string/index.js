@@ -112,9 +112,38 @@ k = k % array.length;
 // 1) whole reverse
 // 2)first k reverse
 // 3)remaining reverse
-rotateArray (array, 0, array.length - 1);
-console.log (array); // first step = [9,8,7,6,5,4,3,2,1]
-rotateArray (array, 0, k - 1);
-console.log (array); // second step = [6,7,8,9,5,4,3,2,1]
-rotateArray (array, k, array.length - 1);
-console.log (array); // final step [6,7,8,9,1,2,3,4,5]
+// rotateArray (array, 0, array.length - 1);
+// console.log (array); // first step = [9,8,7,6,5,4,3,2,1]
+// rotateArray (array, 0, k - 1);
+// console.log (array); // second step = [6,7,8,9,5,4,3,2,1]
+// rotateArray (array, k, array.length - 1);
+// console.log (array); // final step [6,7,8,9,1,2,3,4,5]
+
+// anagram check
+
+function isAnagram (str1, str2) {
+  let a = str1.toLowerCase ().replace (/\s+/g, '');
+  let b = str2.toLowerCase ().replace (/\s+/g, '');
+  // if (a.length !== b.length) {
+  //   return false;
+  // }
+  // let freq = {};
+  // for (let char of a) {
+  //   freq[char] = (freq[char] || 0) + 1;
+  // }
+  // console.log (freq);
+  // for (let char of b) {
+  //   if (!freq[char]) return false;
+  //   freq[char]--;
+  // }
+  // return true;
+
+  // second way
+  // console.log (a.split ('').sort ().join (''));
+  // console.log (b.split ('').sort ().join (''));
+  return a.split ('').sort ().join ('') === b.split ('').sort ().join ('');
+}
+
+let str1 = 'listen';
+let str2 = 'silent';
+console.log (isAnagram (str1, str2));
