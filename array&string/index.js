@@ -162,4 +162,31 @@ function isPalindrome (str) {
   }
   return true;
 }
-console.log (isPalindrome ('MadaM'));
+// console.log (isPalindrome ('MadaM'));
+
+// frequency count
+
+function frequencyCount (str) {
+  s = str.toLowerCase ().replace (/\s+/g, '');
+
+  let freq = {};
+  for (let char of s) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+  return freq;
+}
+// console.log (frequencyCount ('madam'));
+
+// prefix sum array
+
+let arr1 = [1, 2, 3, 4, 5];
+let prefix = new Array (arr1.length);
+prefix[0] = arr1[0];
+
+function buildPrefixSum (arr) {
+  let prefix = new Array (arr.length);
+  prefix[0] = arr[0];
+  return prefix;
+} 
+
+console.log (buildPrefixSum ([1, 2, 3, 4, 5]));
