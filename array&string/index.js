@@ -186,10 +186,34 @@ prefix[0] = arr1[0];
 function buildPrefixSum (arr) {
   let prefix = new Array (arr.length);
   prefix[0] = arr[0];
-  for(let i = 1 ; i < arr.length ; i++){
-    prefix[i] = prefix[i - 1] + arr[i]
+  for (let i = 1; i < arr.length; i++) {
+    prefix[i] = prefix[i - 1] + arr[i];
   }
   return prefix;
-} 
+}
 
-console.log (buildPrefixSum ([1, 2, 3, 4, 5]));
+// console.log (buildPrefixSum ([1, 2, 3, 4, 5]));
+
+// core data structure
+// stack : valid parentheses
+
+function isValidParenthesis (s) {
+  let stack = [];
+  let map = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
+  };
+  console.log (map[')']);
+  for (let ch of s) {
+    if (ch === '(' || ch === '{' || ch === '[') {
+      stack.push (ch);
+    } else {
+      if (stack.length === 0) return false;
+      let top = stack.pop ();
+      if (top !== map[ch]) return false;
+    }
+  }
+  return stack.length === 0;
+}
+console.log (isValidParenthesis ('[()]'));
