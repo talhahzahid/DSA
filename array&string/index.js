@@ -1,7 +1,5 @@
 // reverse string using two pointes approach
 
-const {reverse} = require ('dns');
-
 let str = 'hello';
 let strArr = str.split ('');
 
@@ -260,3 +258,37 @@ console.log (queue[0]);
 // dequeue
 queue.shift (); // complexity (On)
 console.log (queue);
+
+// circular queue
+
+let front = -1;
+console.log (front);
+
+function createCircularQueue (size) {
+  let queue = [];
+  let front = -1;
+  let rear = -1;
+
+  function isEmpty () {
+    return front === -1;
+  }
+
+  function enqueue (val) {
+    if (isEmpty) {
+      front = 0;
+      rear = 0;
+    } else {
+      rear = (rear + 1) % size;
+    }
+    queue[rear] = val;
+  }
+
+  return {enqueue};
+}
+
+let cq = createCircularQueue (5);
+
+cq.enqueue (10);
+cq.enqueue (20);
+cq.enqueue (30);
+cq.enqueue (40);
