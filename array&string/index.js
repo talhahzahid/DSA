@@ -216,4 +216,47 @@ function isValidParenthesis (s) {
   }
   return stack.length === 0;
 }
-console.log (isValidParenthesis ('[()]'));
+// console.log (isValidParenthesis ('[()]'));
+function nextGreEle (arr) {
+  let n = arr.length;
+  console.log (n, 'array length');
+  let res = new Array (n).fill (-1);
+  console.log (res, 'response');
+  let stack = [];
+
+  for (let i = n - 1; i >= 0; i--) {
+    console.log (i, 'i');
+    //POP smaller elements
+    while (stack.length > 0 && stack[stack.length - 1] <= arr[i]) {
+      stack.pop ();
+    }
+    //Top of stack is next grater(if exist)
+    if (stack.length > 0) {
+      res[i] = stack[stack.length - 1];
+    }
+
+    //Push current element
+    stack.push (arr[i]);
+  }
+  return res;
+}
+// console.log (nextGreEle ([4, 5, 2, 10, 8]));
+
+// core data structure
+// Queue : Basic
+
+// FIFO
+// Enqueue Dequeue FrontOperation
+
+let queue = [];
+
+// enqueue
+queue.push (10);
+queue.push (20);
+queue.push (30);
+// front element
+console.log (queue[0]);
+
+// dequeue
+queue.shift (); // complexity (On)
+console.log (queue);
